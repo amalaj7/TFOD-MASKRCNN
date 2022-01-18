@@ -1,5 +1,10 @@
 Tensorflow- MaskRCNN Steps
 ----------------------------------------
+
+```bash
+git clone https://github.com/amalaj7/TFOD-MASKRCNN.git
+```
+
 ```bash
 1.  conda create -n tfod python=3.6   
 ```
