@@ -13,7 +13,7 @@ Tensorflow- MaskRCNN Steps
 4.  conda install -c anaconda protobuf   
 ```
 ```bash
-5.  go to project path 'research'
+5.  go to project path 'models/research'
 ```
 ```bash
 6.  protoc object_detection/protos/*.proto --python_out=.  
@@ -32,7 +32,7 @@ Tensorflow- MaskRCNN Steps
 9) python resize_images.py -d train_images/ -s 800 600
 ```
 
-### Put images and annotations in corresponding folders inside images/ 
+### Put images and annotations in corresponding folders inside images/ (Annotations are in COCO format)
 ```bash
 10)  python create_coco_tf_record.py --logtostderr --train_image_dir=images/train_images --test_image_dir=images/test_images --train_annotations_file=coco_annotations/train.json --test_annotations_file=coco_annotations/test.json --include_masks=True --output_dir=./
 ```
@@ -41,7 +41,7 @@ Tensorflow- MaskRCNN Steps
 
 Training
 -----------------------------------------------------
-* Create a folder called "training" ,inside training folder download your custom model from [Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md) , extract it and create a labelmap.pbtxt file(sample file is given in training folder) that contains the class labels
+* Create a folder called "training" , inside training folder download your custom model from [Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md) , extract it and create a labelmap.pbtxt file(sample file is given in training folder) that contains the class labels
 * Alterations in the config file , copy the config file from object_detection/samples/config and paste it in training folder or else u can use the pipeline.config that comes while downloading the pretrained model 
 * Edit line no 10 - Number of classes
 * Edit line no 128 - Path to model.ckpt file (downloaded model's file)
