@@ -65,6 +65,9 @@ python train.py --logtostderr --train_dir=training/ --pipeline_config_path=train
 python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/mask_rcnn_resnet50_atrous_coco.config --trained_checkpoint_prefix training/model.ckpt-200 --output_directory my_model_mask
 ```
 
+## Inference 
+Open object_detection_tutorial.ipynb and replace the necessary fields like model path, config path and test image path 
+
 ### Result
 ![Segmented Result](models/research/result2.png?raw=true "Title")
 
