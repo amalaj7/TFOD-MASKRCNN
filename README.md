@@ -46,7 +46,7 @@ git clone https://github.com/amalaj7/TFOD-MASKRCNN.git
 
 Training
 -----------------------------------------------------
-* Create a folder called "training" , inside training folder download your custom model from [Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md) , extract it and create a labelmap.pbtxt file(sample file is given in training folder) that contains the class labels
+* Create a folder called "training" , inside training folder download your custom model from [Model Zoo TF1](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md) [Model Zoo TF2](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md) , extract it and create a labelmap.pbtxt file(sample file is given in training folder) that contains the class labels
 * Alterations in the config file , copy the config file from object_detection/samples/config and paste it in training folder or else u can use the pipeline.config that comes while downloading the pretrained model 
 * Edit line no 10 - Number of classes
 * Edit line no 128 - Path to model.ckpt file (downloaded model's file)
@@ -62,12 +62,11 @@ python train.py --logtostderr --train_dir=training/ --pipeline_config_path=train
 
 ### Export Tensorflow Graph
 ```bash
-python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/mask_rcnn_resnet50_atrous_coco.config --trained_checkpoint_prefix training/model.ckpt-200 --output_directory my_model_mask
+python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/mask_rcnn_resnet50_atrous_coco.config --trained_checkpoint_prefix training/model.ckpt-10000 --output_directory my_model_mask
 ```
 
 ## Inference 
 - Open object_detection_tutorial.ipynb and replace the necessary fields like model path, config path and test image path 
-- For TFOD2 , you can utilize inference_from_saved_model_tf2_colab.ipynb and replace the necessary fields like model path, config path and test image path 
 
 ### Result
 ![Segmented Result](models/research/result2.png?raw=true "Title")
@@ -76,3 +75,50 @@ python export_inference_graph.py --input_type image_tensor --pipeline_config_pat
 ```bash
 tensorboard --logdir=training
 ```
+
+Tensorflow2 - MASKRCNN Steps
+------------------------------------------
+
+- Almost similar steps as above .
+
+```bash
+git clone https://github.com/tensorflow/models.git
+```
+
+```bash
+cd models/research
+# Compile protos.
+protoc object_detection/protos/*.proto --python_out=.
+# Install TensorFlow Object Detection API.
+cp object_detection/packages/tf2/setup.py .
+python -m pip install .
+```
+
+### To test the installation
+```bash
+python object_detection/builders/model_builder_tf2_test.py
+```
+
+- Then follow the above steps from 8 to 10 (includes downloading the pretrained model and editing the config file according to your needs)
+
+### Train the model
+```bash
+python model_main_tf2.py --pipeline_config_path=training/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8.config --model_dir=training --alsologtostderr
+
+```
+
+### View tensorboard
+```bash
+tensorboard --logdir=training
+```
+
+### Export Tensorflow Graph
+```bash
+python exporter_main_v2.py \
+    --trained_checkpoint_dir training/model_checkpoint \
+    --output_directory final_model \
+    --pipeline_config_path training/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8.config
+```
+
+## Inference 
+- For TFOD2 , you can utilize inference_from_saved_model_tf2_colab.ipynb and replace the necessary fields like model path, config path and test image path 
