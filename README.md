@@ -23,13 +23,19 @@ Tensorflow- MaskRCNN Steps
 ```
 
 ### Install COCO API
+```bash
 8) pip3 install "git+https://github.com/philferriere/cocoapi.git#egg=pycocotools&subdirectory=PythonAPI"
+```
 
 ### Resize images in a folder
+```bash
 9) python resize_images.py -d train_images/ -s 800 600
+```
 
 ### Put images and annotations in corresponding folders inside images/ 
+```bash
 10)  python create_coco_tf_record.py --logtostderr --train_image_dir=images/train_images --test_image_dir=images/test_images --train_annotations_file=coco_annotations/train.json --test_annotations_file=coco_annotations/test.json --include_masks=True --output_dir=./
+```
 
 * copy nets and deployment folder and export_inference_graph.py from slim folder and paste it in research folder 
 
