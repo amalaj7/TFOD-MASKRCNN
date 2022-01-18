@@ -10,7 +10,7 @@ Tensorflow- MaskRCNN Steps
 3.  pip install pillow lxml Cython contextlib2 jupyter matplotlib pandas opencv-python tensorflow==1.15.0 (for GPU- tensorflow-gpu)
 ```
 ```bash
-4.  conda install -c anaconda protobuf   # to convert protocolbuffer(language ofGoogle to py)
+4.  conda install -c anaconda protobuf   
 ```
 ```bash
 5.  go to project path 'research'
