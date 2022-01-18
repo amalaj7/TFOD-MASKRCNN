@@ -60,6 +60,9 @@ python train.py --logtostderr --train_dir=training/ --pipeline_config_path=train
 python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/mask_rcnn_resnet50_atrous_coco.config --trained_checkpoint_prefix training/model.ckpt-200 --output_directory my_model_mask
 ```
 
+### Result
+![Segmented Result](models/research/result2.png?raw=true "Title")
+
 ### View tensorboard
 ```bash
 tensorboard --logdir=training
