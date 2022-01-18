@@ -66,7 +66,8 @@ python export_inference_graph.py --input_type image_tensor --pipeline_config_pat
 ```
 
 ## Inference 
-Open object_detection_tutorial.ipynb and replace the necessary fields like model path, config path and test image path 
+- Open object_detection_tutorial.ipynb and replace the necessary fields like model path, config path and test image path 
+- For TFOD2 , you can utilize inference_from_saved_model_tf2_colab.ipynb and replace the necessary fields like model path, config path and test image path 
 
 ### Result
 ![Segmented Result](models/research/result2.png?raw=true "Title")
