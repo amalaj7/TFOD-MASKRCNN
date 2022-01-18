@@ -46,7 +46,7 @@ git clone https://github.com/amalaj7/TFOD-MASKRCNN.git
 
 Training
 -----------------------------------------------------
-* Create a folder called "training" , inside training folder download your custom model from [Model Zoo TF1] (https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md) | [Model Zoo TF2](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md) , extract it and create a labelmap.pbtxt file(sample file is given in training folder) that contains the class labels
+* Create a folder called "training" , inside training folder download your custom model from [Model Zoo TF1](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md) | [Model Zoo TF2](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md) , extract it and create a labelmap.pbtxt file(sample file is given in training folder) that contains the class labels
 * Alterations in the config file , copy the config file from object_detection/samples/config and paste it in training folder or else u can use the pipeline.config that comes while downloading the pretrained model 
 * Edit line no 10 - Number of classes
 * Edit line no 128 - Path to model.ckpt file (downloaded model's file)
