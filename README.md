@@ -122,3 +122,22 @@ python exporter_main_v2.py \
 
 ## Inference 
 - For TFOD2 , you can utilize inference_from_saved_model_tf2_colab.ipynb and replace the necessary fields like model path, config path and test image path 
+
+## TFLite Conversion
+```bash
+import tensorflow as tf
+
+# Your saved model directory that contains graph
+saved_model_dir = 'final_model/saved_model/'
+```
+
+```bash
+converter = tf.lite.TFLiteConverter.from_saved_model(saved_model_dir)
+converter.target_spec.supported_ops = [
+tf.lite.OpsSet.TFLITE_BUILTINS, # enable TensorFlow Lite ops.
+tf.lite.OpsSet.SELECT_TF_OPS # enable TensorFlow ops.
+]
+tflite_model = converter.convert()
+# Save the tflite model in your research directory 
+open("model.tflite", "wb").write(tflite_model)
+```
