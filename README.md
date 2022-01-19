@@ -79,6 +79,8 @@ tensorboard --logdir=training
 Tensorflow2 - MASKRCNN Steps
 ------------------------------------------
 
+You can also follow this article: https://amalaj7.medium.com/maskrcnn-tensorflow-object-detection-api-8caae74ea4cc
+
 - Almost similar steps as above .
 
 ```bash
