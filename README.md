@@ -114,6 +114,8 @@ python model_main_tf2.py --pipeline_config_path=training/mask_rcnn_inception_res
 tensorboard --logdir=training
 ```
 
+- Copy exporter_main_v2.py from object detection folder to research folder.
+
 ### Export Tensorflow Graph
 ```bash
 python exporter_main_v2.py \
